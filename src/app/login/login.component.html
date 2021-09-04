@@ -1,0 +1,32 @@
+<div id="container" class="container">
+    <div class="row">
+      <div class="col col-sm">
+      </div>
+      <div class="col-10 col-sm">
+        <h1 style="text-align: center;">Easy Task Manager</h1>
+        <mat-card>
+          <h2>Login</h2>
+          <div class="input-group mb-3">
+            <input type="email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1" [(ngModel)]="email">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"><mat-icon>lock</mat-icon></span>
+              </div>
+          </div>
+          <div class="input-group mb-3">
+            <input type="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" [(ngModel)]="password">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"><mat-icon> vpn_key</mat-icon></span>
+              </div>
+          </div>
+          <button type="button" class="btn btn-success" (click)="login()">Login</button>
+          <button style="margin-left: 10px;" type="button" class="btn btn-outline-secondary" [routerLink]="['/signup']" >Create an account</button>
+          <p class="frgtPass">Forgot password?</p>
+        </mat-card>
+      </div>
+      <div class="col col-sm">
+
+        <!-- <a class="button" [routerLink]="['/crisis-list']">Crisis Center</a> -->
+       
+      </div>
+    </div>
+  </div>
