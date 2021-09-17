@@ -14,4 +14,16 @@
 .card{
     margin-top: 10px;
     box-shadow: 5px 5px 8px #888888;
+    height: auto;
+}
+
+.wrapper {
+  max-width: 400px;
+}
+
+.descp {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }

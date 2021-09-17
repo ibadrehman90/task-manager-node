@@ -1,0 +1,71 @@
+
+<div class="container" id="container">
+    <mat-progress-bar *ngIf="!items" style="margin-top: 20px;" mode="indeterminate"></mat-progress-bar>
+    <div class="row" *ngIf="items">
+        <div class="col sm">
+            <div *ngIf="isSuccess" class="alert alert-success" role="alert">
+                {{msg}}
+            </div>
+            <div *ngIf="isFailed" class="alert alert-danger" role="alert">
+                {{msg}}
+             </div>
+        </div>
+        <div class="col-8">
+            <p class="completed" *ngIf="isCompleted">Completed</p>
+            <div class="jumbotron">
+                <mat-chip *ngIf="!isUpdate" style="float: right;" color="primary" selected>Priority: {{selected}}</mat-chip>
+                <mat-form-field *ngIf="isUpdate" style="float: right;">
+                    <mat-label>Set Priority</mat-label>
+                    <mat-select [(value)]="selected">
+                      <mat-option value="High">High</mat-option>
+                      <mat-option value="Medium">Medium</mat-option>
+                      <mat-option value="Low">Low</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            <div style="padding: 10px;">
+                <h2>Title</h2>
+                <p *ngIf="!isUpdate" style="font-size: 18px;"> {{title}}</p>
+                <input *ngIf="isUpdate" type="text" class="form-control" placeholder="E.g. Complete the presentation for monthly sales report..." [(ngModel)]="title">
+            </div>
+            <div style="padding: 10px;">
+                <h2>Description</h2>
+                <div *ngIf="!isUpdate" style="height: 250px;overflow-y: scroll;background-color: white;padding: 10px;">
+                    <p  style="font-size: 18px;"> {{descp}} </p>
+                </div>
+                <textarea  *ngIf="isUpdate" type="text" rows="06" class="form-control" placeholder="Add details about the task..." [(ngModel)]="descp"></textarea>
+            </div>
+            <div style="padding: 10px;">
+                <h2>Due on</h2>
+                <div style="margin-left:2px;" class="row" *ngIf="!isUpdate">
+                    <div class="col-06">
+                        <p style="font-size: 18px;">{{myDate}}</p>
+                    </div>
+                    <div style="margin-left:50px;" class="col-06">
+                        <p style="font-size: 18px;">{{time}}</p>
+                    </div>
+                </div>
+                <div class="row" *ngIf="isUpdate">
+                    <div id="datePicker" class="col-8">
+                        <!-- <input type="text" placeholder="Datepicker" class="form-control" bsDatepicker [bsValue]="bsValue"> -->
+                        <input id="mydate" style="width: 80%;height:40px;" type="date" [(ngModel)]="myDate" onchange="console.log(myDate = this.value.split('T')[0]);">
+                    </div>
+                    <div class="col-4">
+                        <timepicker  [(ngModel)]="myTime" [min]="minTime" [max]="maxTime"></timepicker>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="isUser && !isCompleted" style="float: right;margin-top: 15px;">
+                <button *ngIf="!isUpdate" style="margin-right: 10px;" mat-raised-button color="primary" (click)="update()">Update</button>
+                <button *ngIf="isUpdate" mat-raised-button style="background-color: green;color:white;" (click)="updateTask()">Save</button>
+                <button style="margin-right: 10px;margin-left: 10px;" mat-raised-button color="accent" [routerLink]="['/tasks']">Cancel</button>
+                <button *ngIf="!isUpdate" mat-raised-button color="warn" (click)="delete()">Delete</button>
+            </div>
+            <button *ngIf="isCompleted" style="float: right;margin-top: 15px;" mat-raised-button color="accent" [routerLink]="['/tasks']">Back</button>
+           
+            </div>
+        </div>
+        <div class="col sm"></div>
+    </div>
+    
+</div>
+

@@ -7,10 +7,10 @@
         <mat-card>
           <h2>Create an account</h2>
           <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Email" aria-label="Full name" aria-describedby="basic-addon1" [(ngModel)]="name">
+            <input type="text" class="form-control" placeholder="Full name" aria-label="Full name" aria-describedby="basic-addon1" [(ngModel)]="name">
           </div>
           <div class="input-group mb-3">
-            <input type="email" class="form-control" placeholder="Full name" aria-label="Email address" aria-describedby="basic-addon1" [(ngModel)]="name">
+            <input type="email" class="form-control" placeholder="Email" aria-label="Email address" aria-describedby="basic-addon1" [(ngModel)]="email">
           </div>
           <div class="input-group mb-3">
             <input type="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" [(ngModel)]="pass">
@@ -18,9 +18,15 @@
           <div class="input-group mb-3">
             <input type="password" class="form-control" placeholder="Confirm password" aria-label="Confirm password" aria-describedby="basic-addon1" [(ngModel)]="confpass">
           </div>
-          <button type="button" class="btn btn-success">Register</button>
+          <button type="button" class="btn btn-success" (click)="signup()">Register</button>
           <button style="margin-left: 10px;" type="button" class="btn btn-outline-secondary" [routerLink]="['/']" >Already have an account?</button>
         </mat-card>
+        <div *ngIf="isSuccess" class="alert alert-success" role="alert">
+          {{msg}}
+        </div>
+        <div *ngIf="isFailed" class="alert alert-danger" role="alert">
+            {{msg}}
+        </div>
       </div>
       <div class="col col-sm">
 

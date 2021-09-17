@@ -1,5 +1,5 @@
 <div class="addBtn">
-    <button mat-raised-button color="primary" matTooltip="Create a new task" aria-label="Example icon button with a delete icon">
+    <button [routerLink]="['/new-task']" mat-raised-button color="primary" matTooltip="Create a new task" aria-label="Example icon button with a delete icon">
         <mat-icon>add</mat-icon> Create New
     </button>
 </div>
@@ -10,8 +10,16 @@
       </div>
       <div class="col-6">
         <mat-tab-group class="tabs">
-            <mat-tab label="Active Tasks"> <app-active-tasks></app-active-tasks></mat-tab>
-            <mat-tab label="Completed Tasks"> <app-completed-tasks></app-completed-tasks> </mat-tab>
+            <mat-tab label="Active Tasks">
+              <ng-template matTabContent>
+                <app-active-tasks></app-active-tasks>
+              </ng-template>
+              </mat-tab>
+            <mat-tab label="Completed Tasks"> 
+              <ng-template matTabContent>
+                <app-completed-tasks></app-completed-tasks> 
+              </ng-template>
+            </mat-tab>
           </mat-tab-group>
       </div>   
       <div class="col col-sm">

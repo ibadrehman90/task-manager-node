@@ -1,6 +1,7 @@
 <div id="container" class="container">
     <div class="row">
       <div class="col col-sm">
+    
       </div>
       <div class="col-10 col-sm">
         <h1 style="text-align: center;">Easy Task Manager</h1>
@@ -22,6 +23,12 @@
           <button style="margin-left: 10px;" type="button" class="btn btn-outline-secondary" [routerLink]="['/signup']" >Create an account</button>
           <p class="frgtPass">Forgot password?</p>
         </mat-card>
+        <div *ngIf="isSuccess" class="alert alert-success" role="alert">
+          {{msg}}
+      </div>
+      <div *ngIf="isFailed" class="alert alert-danger" role="alert">
+          {{msg}}
+       </div>
       </div>
       <div class="col col-sm">
 

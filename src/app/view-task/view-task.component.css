@@ -1,0 +1,15 @@
+
+#container{
+    padding-top: 20px;
+  }
+.input-group-text{
+  background-color: white;
+}
+
+#datePicker{
+  margin-top: 25px;
+}
+
+.completed{
+  float: right;padding:15px;color:green;font-weight:bold;font-size:18px;
+}

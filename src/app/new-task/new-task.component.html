@@ -1,0 +1,57 @@
+
+<div class="container" id="container">
+    <h1 style="text-align: center;">Create a new task</h1>
+    <div class="row">
+        <div class="col sm">
+            <div *ngIf="isSuccess" class="alert alert-success" role="alert">
+                {{msg}}
+            </div>
+            <div *ngIf="isFailed" class="alert alert-danger" role="alert">
+                {{msg}}
+             </div>
+        </div>
+        <div class="col-8">
+            <div class="jumbotron">
+                <mat-form-field style="float: right;">
+                    <mat-label>Set Priority</mat-label>
+                    <mat-select [(value)]="priority">
+                      <mat-option value="High">High</mat-option>
+                      <mat-option value="Medium">Medium</mat-option>
+                      <mat-option value="Low">Low</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            <div style="padding: 10px;">
+                <h2>Title</h2>
+                <input type="text" class="form-control" [(ngModel)]="title" placeholder="E.g. Complete the presentation for monthly sales report...">
+            </div>
+            <div style="padding: 10px;">
+                <h2>Description</h2>
+                <textarea type="text" rows="06" [(ngModel)]="descp" class="form-control" placeholder="Add details about the task..."></textarea>
+            </div>
+            <div style="padding: 10px;">
+                <h2>Due on</h2>
+                <div class="row">
+                    <div id="datePicker" class="col-8">
+                        <!-- <input type="text" placeholder="Datepicker" class="form-control" bsDatepicker [bsValue]="bsValue" onchange="console.log(this.value.split('T')[0]);"> -->
+                        <input id="mydate" style="width: 80%;height:40px;" type="date" [(ngModel)]="myDate" onchange="console.log(myDate = this.value.split('T')[0]);">
+                    </div>
+                    <div class="col-4">
+                        <timepicker [(ngModel)]="myTime" [min]="minTime" [max]="maxTime"></timepicker>
+                    </div>
+                </div>
+            </div>
+            <div style="float: right;margin-top: 15px;">
+                <button style="margin-right: 10px;" mat-raised-button color="primary" (click)="createTask()">Save</button>
+                <button mat-raised-button color="warn" [routerLink]="['/tasks']">Cancel</button>
+            </div>
+           
+            </div>
+        </div>
+        <div class="col sm"></div>
+    </div>
+
+  
+    
+    
+</div>
+
