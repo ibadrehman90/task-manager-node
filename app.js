@@ -1,14 +1,35 @@
-require('./db/connect')
 const express = require('express')
 const app = express()
 
 // importing tasks routes
 const tasks = require('./routes/tasks')
-
+// importing users routes
+const users = require('./routes/users')
+// DB connection
+const connectDB = require('./db/connect')
+require('dotenv').config()
 // middlewear
 app.use(express.json())
 
+app.use('/api/v1/users',users)
 app.use('/api/v1/tasks',tasks)
+
+
+const port = 3000
+
+const start = async() => {
+    try {
+        await connectDB(process.env.MONGO_URI)
+        app.listen(port, () => {
+            console.log(`Server started on port ${port}`);
+        });
+    } catch (error) {
+        
+    }
+}
+
+start()
+
 
 
 // routes
@@ -31,10 +52,3 @@ app.use('/api/v1/tasks',tasks)
 
 // delete a task
 // app.delete('/api/v1/tasks/:id')
-
-const port = 3000
-
-app.listen(port, () => {
-    console.log(`Server started on port ${port}`);
-});
-
